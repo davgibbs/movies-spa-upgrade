@@ -22,6 +22,4 @@ Then as with all Django projects, run the "migrate" command to create the databa
 ```
 After the "runserver" to see the base page above (with no movies added yet). You will need to add 'Movie Genres' using the Django admin ('/admin/') before adding your first movie using the front-end.
 
-Optionally when developing you can load in the test JSON data provided to create an initial Movie in the database
-
 When developing it may be useful to run "gulp" in the root directory to re-fresh the page when and changes to static files are made. All AngularJS code is in the Django "static" directory.
