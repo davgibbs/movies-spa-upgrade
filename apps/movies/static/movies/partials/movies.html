@@ -1,0 +1,23 @@
+<div class="centre_text">
+    <p><a ui-sref="newMovie" class="btn-primary btn-lg nodecoration" ng-show="loggedIn">Add New Movie</a></p>
+
+    <select class="form-control" ng-model="selectedOrder" ng-options="option.type for option in order_by_options track by option.id"></select>
+    <p><input type="text" class="form-control" ng-model="searchText" placeholder="Search by Title"></p>
+
+    <div class="col-sm-6 col-md-4" dir-paginate="movie in movies | filter:{title:searchText} | orderBy: selectedOrder.id | itemsPerPage:6">
+        <div class="thumbnail">
+            <img ng-src="[[movie.image]]" alt="[[movie.title]] image" style="height:150px">
+            <div class="caption">
+                <h3>[[movie.title]] ([[movie.release_year]])</h3>
+                <p><span uib-rating ng-model="movie.rating" read-only="true" aria-labelledby="default-rating" for="movie-rating"></span></p>
+                <p>
+                    <a class="btn btn-small btn-info" href="#!/movies/[[movie.id]]/view">Read more</a>
+                    <a class="btn btn-danger" ng-show="loggedIn && movie.user == userId" ng-click="deleteMovie(movie)">Delete</a>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="centre_text">
+    <dir-pagination-controls max-size="6" direction-links="false" boundary-links="true"></dir-pagination-controls>
+</div>

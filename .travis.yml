@@ -1,0 +1,26 @@
+language: python
+node_js:
+  - "0.10.25"
+python:
+  - "3.5"
+# command to install dependencies
+install:
+  - pip install -r requirements.txt
+  - npm install -g jshint csslint phantomjs-prebuilt js-beautify jasmine-node karma jasmine jasmine-core karma-jasmine karma-firefox-launcher karma-chrome-launcher karma-phantomjs-launcher karma-coverage htmlhint
+# command to run tests
+script:
+  - flake8 apps/
+  - python -Wall apps/manage.py test -v 2 movies --settings=spa_movies.test_settings
+  - coverage3 run --source='./apps' --omit='*migrations*' apps/manage.py test movies --settings=spa_movies.test_settings
+  - coverage3 report -m
+  - jshint apps/movies/static/movies/js/
+  - jshint apps/movies/static/movies/test/spec
+  - csslint apps/movies/static/movies/css/app.css
+  - htmlhint --config htmlhint.conf apps/movies/templates/movies/index.html
+  - htmlhint --config htmlhint.conf apps/movies/static/movies/partials/
+  - css-beautify -r apps/movies/static/movies/css/app.css
+  - html-beautify -r apps/movies/templates/movies/index.html
+  - html-beautify -r apps/movies/static/movies/partials/*.html
+  - js-beautify -r apps/movies/static/movies/js/*.js
+  - phantomjs -v
+  - karma start --single-run

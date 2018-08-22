@@ -1,0 +1,44 @@
+<div class="row">
+    <div class="col-sm-5">
+        <div class="thumbnail">
+            <img ng-src="[[movie.image]]" alt="Movie Image">
+        </div>
+    </div>
+    <div class="col-sm-7">
+        <h1>[[movie.title]]</h1>
+        <table class="table movietable">
+            <tr>
+                <td colspan="2">[[movie.summary]]</td>
+            </tr>
+            <tr>
+                <td>Director</td>
+                <td>[[movie.director]]</td>
+            </tr>
+            <tr>
+                <td>Release Year</td>
+                <td>[[movie.release_year]]</td>
+            </tr>
+            <tr>
+                <td>Movie Genre</td>
+                <td>[[movie.genre_obj.name]]</td>
+            </tr>
+            <tr>
+                <td>Movie Rating</td>
+                <td ng-controller="RatingController">
+                    <span uib-rating ng-model="movie.rating" read-only="true" aria-labelledby="default-rating" on-hover="hoveringOver(value)" for="movie-rating"></span>
+                </td>
+            </tr>
+            <tr>
+                <td>Uploader</td>
+                <td>[[movie.user_obj.username]]</td>
+            </tr>
+            <tr>
+                <td>
+                    <a class="btn btn-info" href="#!/movies">Back</a>
+                    <a class="btn btn-primary" ui-sref="editMovie({id:movie.id})" ng-show="loggedIn && movie.user === userId">Edit</a>
+                </td>
+                <td>&nbsp;</td>
+            </tr>
+        </table>
+    </div>
+</div>
