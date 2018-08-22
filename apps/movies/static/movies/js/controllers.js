@@ -249,7 +249,6 @@ angular.module('movieApp.controllers', ['angularUtils.directives.dirPagination']
                             $state.go('movies', {});
                         });
                 }, function errorCallback(message) {
-                    console.log(message)
                     $scope.loginError = message.data.non_field_errors[0];
                     $rootScope.$broadcast(AUTH_EVENTS.loginFailed);
                 });
