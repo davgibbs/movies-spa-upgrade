@@ -1,0 +1,52 @@
+[
+  {
+    "model": "movies.MovieGenre",
+    "pk": 1,
+    "fields": {
+      "name": "Action"
+    }
+  },
+  {
+    "model": "movies.MovieGenre",
+    "pk": 2,
+    "fields": {
+      "name": "Adventure"
+    }
+  },
+  {
+    "model": "movies.MovieGenre",
+    "pk": 3,
+    "fields": {
+      "name": "Comedy"
+    }
+  },
+  {
+    "model": "movies.MovieGenre",
+    "pk": 4,
+    "fields": {
+      "name": "Drama"
+    }
+  },
+  {
+    "model": "movies.MovieGenre",
+    "pk": 5,
+    "fields": {
+      "name": "Science Fiction"
+    }
+  },
+  {
+    "model": "movies.Movie",
+    "pk": 1,
+    "fields": {
+      "title": "Lion King",
+      "created_date": "2018-01-01",
+      "summary": "A Lion cub crown prince is tricked by a treacherous uncle into thinking he caused his father's death and flees into exile in despair, only to learn in adulthood his identity and his responsibilities.",
+      "release_year": "1994",
+      "director": "Roger Allers, Rob Minkoff",
+      "genre": "2",
+      "image": "/movies/lion-king-poster.jpg",
+      "rating": "5",
+      "user": "1"
+    }
+  }
+]
