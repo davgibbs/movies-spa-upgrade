@@ -10,8 +10,8 @@ install:
 # command to run tests
 script:
   - flake8 apps/
-  - python -Wall apps/manage.py test -v 2 movies --settings=spa_movies.test_settings
-  - coverage3 run --source='./apps' --omit='*migrations*' apps/manage.py test movies --settings=spa_movies.test_settings
+  - python -Wall apps/manage.py test -v 2 movies
+  - coverage3 run --source='./apps' --omit='*migrations*' apps/manage.py test movies
   - coverage3 report -m
   - jshint apps/movies/static/movies/js/
   - jshint apps/movies/static/movies/test/spec
