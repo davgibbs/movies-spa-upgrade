@@ -27,6 +27,7 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^api/', include(router.urls)),
     url(r'^$', TemplateView.as_view(template_name='movies/index.html')),
+    # url(r'^$', TemplateView.as_view(template_name='movies/vue_index.html')),
     url(r'^rest-auth/', include('rest_auth.urls')),
     url(r'^api-doc/$', get_swagger_view(title='Movies API'))
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
