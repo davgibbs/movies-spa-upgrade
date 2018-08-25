@@ -24,3 +24,5 @@ script:
   - js-beautify -r apps/movies/static/movies/js/*.js
   - phantomjs -v
   - karma start --single-run
+after_success:
+  - coveralls
