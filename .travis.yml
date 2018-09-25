@@ -6,7 +6,7 @@ python:
 # command to install dependencies
 install:
   - pip install -r requirements.txt
-  - npm install -g jshint csslint phantomjs-prebuilt js-beautify jasmine-node karma jasmine jasmine-core karma-jasmine karma-firefox-launcher karma-chrome-launcher karma-phantomjs-launcher karma-coverage htmlhint
+  - npm install -g
 # command to run tests
 script:
   - flake8 apps/
