@@ -27,7 +27,7 @@
     "karma-phantomjs-launcher": "^1.0.4"
   },
   "scripts": {
-    "test": "node_modules/.bin/jshint apps/movies/static/movies/js/"
+    "jshint": "node_modules/.bin/jshint apps/movies/static/movies/js/ && node_modules/.bin/jshint apps/movies/static/movies/test/spec"
   },
   "repository": {
     "type": "git",

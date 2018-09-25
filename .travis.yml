@@ -16,17 +16,15 @@ script:
   - coverage3 report -m
   - node -v
   - npm -v
-  - npm run test
-  - jshint apps/movies/static/movies/js/
-  - jshint apps/movies/static/movies/test/spec
-  - csslint apps/movies/static/movies/css/app.css
-  - htmlhint --config htmlhint.conf apps/movies/templates/movies/index.html
-  - htmlhint --config htmlhint.conf apps/movies/static/movies/partials/
-  - css-beautify -r apps/movies/static/movies/css/app.css
-  - html-beautify -r apps/movies/templates/movies/index.html
-  - html-beautify -r apps/movies/static/movies/partials/*.html
-  - js-beautify -r apps/movies/static/movies/js/*.js
+  - npm run jshint
+  - node_modules/.bin/csslint apps/movies/static/movies/css/app.css
+  - node_modules/.bin/htmlhint --config htmlhint.conf apps/movies/templates/movies/index.html
+  - node_modules/.bin/htmlhint --config htmlhint.conf apps/movies/static/movies/partials/
+  - node_modules/.bin/css-beautify -r apps/movies/static/movies/css/app.css
+  - node_modules/.bin/html-beautify -r apps/movies/templates/movies/index.html
+  - node_modules/.bin/html-beautify -r apps/movies/static/movies/partials/*.html
+  - node_modules/.bin/js-beautify -r apps/movies/static/movies/js/*.js
   - phantomjs -v
-  - karma start --single-run
+  - node_modules/.bin/karma start --single-run
 after_success:
   - coveralls
