@@ -1,6 +1,11 @@
 'use strict';
 
-var app = angular.module('movieApp', ['ui.router', 'ui.bootstrap', 'movieApp.controllers', 'movieApp.services', 'movieApp.directives']);
+var angular = require('angular');
+require('./directives');
+require('./services');
+require('./controllers');
+
+var app = angular.module('movieApp', ['ui.router', 'ui.bootstrap', 'angularUtils.directives.dirPagination', 'movieApp.controllers', 'movieApp.services', 'movieApp.directives']);
 
 app.config(function($stateProvider, $urlRouterProvider, $httpProvider, $interpolateProvider) {
 
