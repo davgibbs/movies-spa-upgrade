@@ -6,8 +6,7 @@ python:
 # command to install dependencies
 install:
   - pip install -r requirements.txt
-  - npm i -g npm
-  - npm install -g
+  - npm install --dev
 # command to run tests
 script:
   - flake8 apps/
