@@ -1,1 +1,1 @@
-{"status":"done","chunks":{"app":[{"name":"app.bundle.js","path":"/home/davidg/movies-spa-upgrade/dist/js/app.bundle.js"}],"vendor":[{"name":"vendor.bundle.js","path":"/home/davidg/movies-spa-upgrade/dist/js/vendor.bundle.js"}]}}
+{"status":"done","chunks":{"app":[{"name":"app.bundle.js","path":"/home/davidg/movies-spa-upgrade/apps/movies/static/movies/dist/app.bundle.js"}]}}

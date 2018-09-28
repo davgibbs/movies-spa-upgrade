@@ -5,10 +5,10 @@ module.exports = {
     context: __dirname + '/apps/movies/static/movies',
     entry: {
         app: './js/app.js',
-        vendor: ['jquery', 'bootstrap', 'angular', 'angular-ui-router', 'angular-ui-bootstrap', 'angular-utils-pagination']
+        //vendor: ['bootstrap', 'angular', 'angular-ui-router', 'angular-ui-bootstrap']
     },
     output: {
-        path: __dirname + '/dist/js',
+        path: __dirname + '/apps/movies/static/movies/dist',
         filename: '[name].bundle.js'
         //filename: '[name].[chunkhash].bundle.js'
     },
@@ -21,11 +21,33 @@ module.exports = {
           minSize: 800000
       }
     },*/
+    optimization: {
+     minimize: false
+   },
     module: {
       rules: [
         {
           test: /\.css$/,
           use: ['style-loader', 'css-loader']
+        },
+        {
+          test: /\.html$/,
+          use: [{
+           loader: "html-loader"
+          }]
+        },
+        {
+          test: /.*\.(gif|png|jpe?g|svg)$/i,
+          use: [
+              {
+                loader: "file-loader",
+                options: {
+                  name: '[name].[ext]',
+                  outputPath: '/images/',
+                  publicPath: '/images/'
+                }
+              }
+          ]
         }
       ]
     }
