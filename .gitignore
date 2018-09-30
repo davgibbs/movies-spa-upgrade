@@ -66,5 +66,6 @@ target/
 *~
 py27/
 py35/
+py36/
 .idea/
 node_modules/
