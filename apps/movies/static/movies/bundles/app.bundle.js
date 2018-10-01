@@ -46509,7 +46509,7 @@ module.exports = "<p class=\"lead\">This is a website to keep track of movies th
 /* 20 */
 /***/ (function(module, exports) {
 
-module.exports = "/images/Movie.jpg";
+module.exports = "/static/bundles/images/Movie.jpg";
 
 /***/ }),
 /* 21 */
