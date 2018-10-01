@@ -8,12 +8,12 @@ module.exports = {
         //vendor: ['bootstrap', 'angular', 'angular-ui-router', 'angular-ui-bootstrap']
     },
     output: {
-        path: __dirname + '/apps/movies/static/movies/dist',
+        path: __dirname + '/apps/movies/static/movies/bundles',
         filename: '[name].bundle.js'
         //filename: '[name].[chunkhash].bundle.js'
     },
     plugins: [
-        new BundleTracker({filename: './webpack-stats.json'})
+        new BundleTracker({filename: './apps/webpack-stats.json'})
     ],
     /*optimization: {
         splitChunks: {

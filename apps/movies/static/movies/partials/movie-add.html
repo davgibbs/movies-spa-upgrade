@@ -1,3 +1,58 @@
 <form class="form-horizontal" role="form" ng-submit="addMovie()">
-    <div ng-include="'apps/movies/static/movies/partials/_form.html'"></div>
+
+    <div class="form-group">
+        <label for="title" class="col-sm-2 control-label">Title</label>
+        <div class="col-sm-10">
+            <input type="text" ng-model="movie.title" class="form-control" id="title" placeholder="Movie Title" required/>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="summary" class="col-sm-2 control-label">Summary</label>
+        <div class="col-sm-10">
+            <textarea data-ng-model="movie.summary" class="form-control" id="summary" placeholder="Brief summary of the movie"></textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="director" class="col-sm-2 control-label">Director</label>
+        <div class="col-sm-10">
+            <input type="text" ng-model="movie.director" class="form-control" id="director" placeholder="Who directed the movie?" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="year" class="col-sm-2 control-label">Release Year</label>
+        <div class="col-sm-10">
+            <input type="text" ng-model="movie.release_year" class="form-control" id="year" placeholder="When was the movie released?" />
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="movie-genre" class="col-sm-2 control-label">Movie Genre</label>
+        <div class="col-sm-10">
+            <select data-ng-model="movie.genre" data-ng-options="genre.id as genre.name for genre in genres" class="form-control" id="movie-genre"></select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="movie-image" class="col-sm-2 control-label">Movie Image</label>
+        <div class="col-sm-10">
+            <input type="file" file-model="movie.myFile" accept="image/*!" id="movie-image">
+            <div ng-if="movie.image != null">
+                <span>Current Image: </span><img ng-src="[[movie.image]]" alt="Movie Image" height="50" width="50">
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="movie-rating" class="col-sm-2 control-label">Movie Rating</label>
+        <div class="col-sm-10" ng-controller="RatingController">
+            <div>
+                <span uib-rating ng-model="movie.rating" max="max" read-only="isReadonly" on-hover="hoveringOver(value)" on-leave="overStar = null" titles="['one','two','three']" aria-labelledby="default-rating" id="movie-rating"></span>
+                <span class="label" ng-class="{'label-warning': percent<30, 'label-info': percent>=30 && percent<70, 'label-success': percent>=70}" ng-show="overStar && !isReadonly">[[percent]]%</span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <a class="btn btn-info" href="#!/movies">Back</a>
+            <input type="submit" class="btn btn-primary" value="Add" />
+        </div>
+    </div>
+
 </form>

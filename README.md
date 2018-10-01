@@ -18,7 +18,7 @@ Then as with all Django projects, run the "migrate" command to create the databa
 ```bash
     $ python manage.py migrate
     $ python manage.py createsuperuser
-    $ python manage.py runserver
+    $ python manage.py runserver 
 ```
 After the "runserver" to see the base page above (with no movies added yet). You will need to add 'Movie Genres' using the Django admin ('/admin/') before adding your first movie using the front-end.
 

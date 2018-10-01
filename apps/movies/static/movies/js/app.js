@@ -9,7 +9,7 @@ require('./controllers');
 require('./services');
 require('./directives');
 
-require('../images/Movie.jpg');
+//require('sdsaimages/Movie.jpg');
 
 var app = angular.module('movieApp', ['ui.router', 'ui.bootstrap', 'movieApp.controllers', 'movieApp.services', 'movieApp.directives']);
 

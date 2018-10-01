@@ -1,4 +1,5 @@
 {% load static %}
+{% load render_bundle from webpack_loader %}
 <!DOCTYPE html>
 <html data-ng-app="movieApp">
 
@@ -50,7 +51,7 @@
     <!--<script src="{% static 'movies/lib/dirPagination.js' %}"></script>-->
 
         <!--<script src="{% static 'movies/dist/js/app.bundle.js' %}"></script>-->
-
+    {% render_bundle 'app' %}
     <!--<script src="{% static 'movies/lib/jquery-1.12.4.min.js' %}"></script>-->
     <!--<script src="{% static 'movies/lib/bootstrap-3.3.7-dist/js/bootstrap.min.js' %}"></script>-->
     <!--<script src="{% static 'movies/lib/angular.min.js' %}"></script>-->
@@ -58,7 +59,8 @@
     <!--<script src="{% static 'movies/lib/dirPagination.js' %}"></script>-->
     <!--<script src="{% static 'movies/lib/ui-bootstrap-tpls-2.0.0.min.js' %}"></script>-->
 
-    <script src="{% static 'movies/dist/app.bundle.js' %}"></script>
+    <!--<script src="{% static 'movies/bundles/app.bundle.js' %}"></script>-->
+
     <!--<script src="{% static 'movies/js/app.js' %}"></script>-->
     <!--<script src="{% static 'movies/partials/movie-templates.js' %}"></script>-->
     <!--<script src="{% static 'movies/js/controllers.js' %}"></script>-->

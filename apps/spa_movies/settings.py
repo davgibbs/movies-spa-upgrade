@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_auth',
     'movies.apps.MoviesConfig',
     'rest_framework_swagger',
+    'webpack_loader',
 ]
 
 MIDDLEWARE = [
@@ -135,4 +136,15 @@ REST_FRAMEWORK = {
     'DEFAULT_PERMISSION_CLASSES': (
         'rest_framework.permissions.IsAuthenticatedOrReadOnly',
     )
+}
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'movies/static/movies'),  # We do this so that django's collectstatic copies or our bundles to the STATIC_ROOT or syncs them to whatever storage we use.
+)
+
+WEBPACK_LOADER = {
+    'DEFAULT': {
+        'BUNDLE_DIR_NAME': 'bundles/',
+        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
+    }
 }

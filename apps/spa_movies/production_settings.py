@@ -1,4 +1,4 @@
-from .settings import *  # noqa
+from .common_settings import *  # noqa
 
 ALLOWED_HOSTS += ['davgibbs.pythonanywhere.com']  # noqa
 
