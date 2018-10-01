@@ -10,8 +10,8 @@
     <title>The Movie Gallery</title>
     <link rel="shortcut icon" href="{% static 'movies/images/favicon.ico' %}" type="image/x-icon">
     <link rel="icon" href="{% static 'movies/images/favicon.ico' %}" type="image/x-icon">
-    <link rel="stylesheet" type="text/css" href="{% static 'movies/lib/bootstrap-3.3.7-dist/css/bootstrap.min.css' %}" />
-    <link rel="stylesheet" type="text/css" href="{% static 'movies/css/app.css' %}" />
+        {% render_bundle 'app' %}
+    <!--<link rel="stylesheet" type="text/css" href="{% static 'movies/lib/bootstrap-3.3.7-dist/css/bootstrap.min.css' %}" />-->
 
 </head>
 
@@ -39,6 +39,7 @@
                 </ul>
             </div>
         </div>
+        <navbar></navbar>
         <div ui-view></div>
         <div class="footer">
             <p>Movie Gallery 2018</p>
@@ -51,7 +52,7 @@
     <!--<script src="{% static 'movies/lib/dirPagination.js' %}"></script>-->
 
         <!--<script src="{% static 'movies/dist/js/app.bundle.js' %}"></script>-->
-    {% render_bundle 'app' %}
+
     <!--<script src="{% static 'movies/lib/jquery-1.12.4.min.js' %}"></script>-->
     <!--<script src="{% static 'movies/lib/bootstrap-3.3.7-dist/js/bootstrap.min.js' %}"></script>-->
     <!--<script src="{% static 'movies/lib/angular.min.js' %}"></script>-->
