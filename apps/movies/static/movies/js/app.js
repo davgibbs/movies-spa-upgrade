@@ -9,12 +9,13 @@ require('./controllers');
 require('./services');
 require('./directives');
 
-require('bootstrap')
-require('../css/app.css')
+//require('bootstrap');
+//require('bootstrap/dist/css/bootstrap.min.css');
+require('../css/app.css');
 
 var app = angular.module('movieApp', ['ui.router', 'ui.bootstrap', 'movieApp.controllers', 'movieApp.services', 'movieApp.directives']);
 
-app.config(function($stateProvider, $urlRouterProvider, $httpProvider, $interpolateProvider) {
+app.config(['$stateProvider', '$urlRouterProvider', '$httpProvider', '$interpolateProvider', function($stateProvider, $urlRouterProvider, $httpProvider, $interpolateProvider) {
 
         $stateProvider.
         state('movies', {
@@ -52,7 +53,7 @@ app.config(function($stateProvider, $urlRouterProvider, $httpProvider, $interpol
 
         $interpolateProvider.startSymbol('[[');
         $interpolateProvider.endSymbol(']]');
-    })
+    }])
     .constant('AUTH_EVENTS', {
         loginSuccess: 'auth-login-success',
         loginFailed: 'auth-login-failed',

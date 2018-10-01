@@ -4,7 +4,7 @@ const BundleTracker = require('webpack-bundle-tracker');
 module.exports = {
     context: __dirname + '/apps/movies/static/movies',
     entry: {
-        app: './js/app.js',
+        app: './js/index.js',
         //vendor: ['bootstrap', 'angular', 'angular-ui-router', 'angular-ui-bootstrap']
     },
     output: {
@@ -21,9 +21,9 @@ module.exports = {
           minSize: 800000
       }
     },*/
-    optimization: {
-     minimize: false
-   },
+//    optimization: {
+//     minimize: false
+//   },
     module: {
       rules: [
         {

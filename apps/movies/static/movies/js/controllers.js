@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('movieApp.controllers', ['angularUtils.directives.dirPagination'])
-    .controller('MovieListController', function($scope, popupService, $http, AuthService, AUTH_EVENTS) {
+    .controller('MovieListController', ['$scope', 'popupService', '$http', 'AuthService', 'AUTH_EVENTS', function($scope, popupService, $http, AuthService, AUTH_EVENTS) {
 
         $scope.movies = [];
 
@@ -65,7 +65,7 @@ angular.module('movieApp.controllers', ['angularUtils.directives.dirPagination']
             }
         };
 
-    }).controller('MovieViewController', function($scope, $stateParams, $http, AuthService, AUTH_EVENTS) {
+    }]).controller('MovieViewController', ['$scope', '$stateParams', '$http', 'AuthService', 'AUTH_EVENTS', function($scope, $stateParams, $http, AuthService, AUTH_EVENTS) {
 
         $scope.loggedIn = AuthService.isAuthenticated();
         $scope.userId = AuthService.userId();
@@ -83,7 +83,7 @@ angular.module('movieApp.controllers', ['angularUtils.directives.dirPagination']
                 $scope.movie = response.data;
             });
 
-    }).controller('MovieCreateController', function($scope, $state, $http, AuthService) {
+    }]).controller('MovieCreateController', ['$scope', '$state', '$http', 'AuthService', function($scope, $state, $http, AuthService) {
 
         $scope.movie = {};
 
@@ -130,7 +130,7 @@ angular.module('movieApp.controllers', ['angularUtils.directives.dirPagination']
             });
         };
 
-    }).controller('MovieEditController', function($scope, $state, $stateParams, $http, AuthService) {
+    }]).controller('MovieEditController', ['$scope', '$state', '$stateParams', '$http', 'AuthService', function($scope, $state, $stateParams, $http, AuthService) {
 
         $scope.updateMovie = function() {
 
@@ -179,7 +179,7 @@ angular.module('movieApp.controllers', ['angularUtils.directives.dirPagination']
 
         $scope.loadMovie();
 
-    }).controller('NavigationCtrl', function($scope, $rootScope, $location, $state, AuthService, AUTH_EVENTS) {
+    }]).controller('NavigationCtrl', ['$scope', '$rootScope', '$location', '$state', 'AuthService', 'AUTH_EVENTS', function($scope, $rootScope, $location, $state, AuthService, AUTH_EVENTS) {
 
         $scope.loggedIn = AuthService.isAuthenticated();
         $scope.$on(AUTH_EVENTS.loginSuccess, function() {
@@ -204,7 +204,7 @@ angular.module('movieApp.controllers', ['angularUtils.directives.dirPagination']
                 });
         };
 
-    }).controller('RatingController', function($scope) {
+    }]).controller('RatingController', ['$scope', function($scope) {
         $scope.max = 5;
         $scope.isReadonly = false;
 
@@ -212,7 +212,7 @@ angular.module('movieApp.controllers', ['angularUtils.directives.dirPagination']
             $scope.overStar = value;
             $scope.percent = 100 * (value / $scope.max);
         };
-    }).controller('UserViewController', function($scope, $rootScope, AuthService, AUTH_EVENTS) {
+    }]).controller('UserViewController', ['$scope', '$rootScope', 'AuthService', 'AUTH_EVENTS', function($scope, $rootScope, AuthService, AUTH_EVENTS) {
 
         AuthService.getUserStatus()
             .then(function successCallback(data) {
@@ -232,7 +232,7 @@ angular.module('movieApp.controllers', ['angularUtils.directives.dirPagination']
             $scope.userName = null;
         });
 
-    }).controller('LoginController', function($scope, $rootScope, $state, AuthService, AUTH_EVENTS) {
+    }]).controller('LoginController', ['$scope', '$rootScope', '$state', 'AuthService', 'AUTH_EVENTS', function($scope, $rootScope, $state, AuthService, AUTH_EVENTS) {
         $scope.credentials = {
             username: '',
             password: ''
@@ -254,4 +254,4 @@ angular.module('movieApp.controllers', ['angularUtils.directives.dirPagination']
                 });
         };
 
-    });
+    }]);

@@ -1,12 +1,12 @@
 'use strict';
 
 angular.module('movieApp.services', [])
-    .service('popupService', function($window) {
+    .service('popupService', ['$window', function($window) {
         this.showPopup = function(message) {
             return $window.confirm(message);
         };
-    })
-    .factory('AuthService', function($http, Session) {
+    }])
+    .factory('AuthService', ['$http', 'Session', function($http, Session) {
         var authService = {};
 
         authService.login = function(credentials) {
@@ -66,7 +66,7 @@ angular.module('movieApp.services', [])
         };
 
         return authService;
-    })
+    }])
     .service('Session', function() {
         // Stores the user id and the user name.
         this.create = function(userId, userName) {
