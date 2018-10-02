@@ -138,8 +138,9 @@ REST_FRAMEWORK = {
     )
 }
 
+# Django's collectstatic copies or our bundles to the STATIC_ROOT or syncs them to whatever storage we use.
 STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'movies/static/movies'),  # We do this so that django's collectstatic copies or our bundles to the STATIC_ROOT or syncs them to whatever storage we use.
+    os.path.join(BASE_DIR, 'movies/static/movies'),
 )
 
 WEBPACK_LOADER = {

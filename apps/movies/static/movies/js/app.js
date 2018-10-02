@@ -9,8 +9,6 @@ require('./controllers');
 require('./services');
 require('./directives');
 
-//require('bootstrap');
-//require('bootstrap/dist/css/bootstrap.min.css');
 require('../css/app.css');
 
 var app = angular.module('movieApp', ['ui.router', 'ui.bootstrap', 'movieApp.controllers', 'movieApp.services', 'movieApp.directives']);

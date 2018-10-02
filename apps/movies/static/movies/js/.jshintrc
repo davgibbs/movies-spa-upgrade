@@ -5,6 +5,7 @@
     "unused": true,
     // Custom Globals
     "globals": {
+        "document": false,
         "jQuery": false,
         "angular": false,
         "console": false,
