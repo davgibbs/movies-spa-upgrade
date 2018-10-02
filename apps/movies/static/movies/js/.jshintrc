@@ -10,6 +10,7 @@
         "angular": false,
         "console": false,
         "FormData": false,
-        "alert": false
+        "alert": false,
+        "require": false
     }
 }

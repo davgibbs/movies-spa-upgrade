@@ -9,11 +9,15 @@ module.exports = {
     },
     output: {
         path: __dirname + '/apps/movies/static/movies/bundles',
-        filename: '[name].bundle.js'
+        filename: '[name].bundle.js',
         //filename: '[name].[chunkhash].bundle.js'
     },
     plugins: [
-        new BundleTracker({filename: './apps/webpack-stats.json'})
+        new BundleTracker({filename: './apps/webpack-stats.json'}),
+        new webpack.ProvidePlugin({
+           $: "jquery",
+           jQuery: "jquery"
+        })
     ],
     /*optimization: {
         splitChunks: {
@@ -37,7 +41,7 @@ module.exports = {
           }]
         },
         {
-          test: /.*\.(gif|png|jpe?g|svg)$/i,
+          test: /.*\.(gif|png|jpe?g)$/i,
           use: [
               {
                 loader: "file-loader",
@@ -48,7 +52,34 @@ module.exports = {
                 }
               }
           ]
-        }
+        },
+        {
+          test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+          use: [
+            {
+                loader: 'url-loader',
+                options: {
+                    limit: 400000,
+                    name: '[name].[ext]',
+                    outputPath: 'fonts/'
+                }
+            }
+          ]
+
+        },
+        {
+          test: /\.(ttf|eot|svg)(\?[\s\S]+)?$/,
+          use: [
+            {
+                loader: 'file-loader',
+                options: {
+                    name: '[name].[ext]',
+                    outputPath: 'fonts/'
+                }
+            }
+
+          ]
+        },
       ]
     }
 };

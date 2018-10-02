@@ -1,5 +1,7 @@
 'use strict';
 
+require('bootstrap/js/dropdown');
+require('bootstrap/dist/css/bootstrap.css');  // import the css. Bootstrap 3
 require('./app.js');
 
 var root = document.createElement("div");
