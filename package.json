@@ -32,7 +32,6 @@
     "karma-firefox-launcher": "^1.1.0",
     "karma-jasmine": "^1.1.1",
     "karma-phantomjs-launcher": "^1.0.4",
-    "phantomjs-prebuilt": "^2.1.16",
     "style-loader": "^0.23.0",
     "webpack": "^4.20.1",
     "webpack-bundle-tracker": "^0.3.0",
