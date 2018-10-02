@@ -11,5 +11,3 @@ root.innerHTML = '<div class="container" data-ng-app="movieApp">' +
                  '<div class="footer"><p>Movie Gallery 2018</p></div>' +
                  '</div>';
 document.body.appendChild(root);
-
-
