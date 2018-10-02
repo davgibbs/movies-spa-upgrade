@@ -6,6 +6,7 @@ python:
 # command to install dependencies
 install:
   - pip install -r requirements.txt
+  - npm install -g npm@latest
   - npm install --only=dev
 # command to run tests
 script:
