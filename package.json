@@ -47,8 +47,9 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "karmatest": "karma start --single-run",
     "bundle": "webpack --config webpack.prod.js",
-    "develop": "webpack-dev-server --open --config webpack.dev.js"
+    "develop": "webpack --watch --config webpack.dev.js"
   },
   "repository": {
     "type": "git",

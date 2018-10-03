@@ -1,6 +1,10 @@
 // Karma configuration
 // Generated on Wed Aug 10 2016 00:22:16 GMT+0100 (IST)
 
+// remove entry value since karma-webpack will set its value automatically
+var webpackConfig = require("./webpack.prod.js");
+webpackConfig.entry = null;
+
 module.exports = function(config) {
   config.set({
 
@@ -17,15 +21,16 @@ module.exports = function(config) {
     files: [
       'apps/movies/static/movies/lib/angular.min.js',
       'apps/movies/static/movies/test/lib/angular-mocks.js',
-      'apps/movies/static/movies/lib/angular-ui-router.min.js',
-      'apps/movies/static/movies/lib/angular-resource.min.js',
-      'apps/movies/static/movies/lib/angular-animate.js',
-      'apps/movies/static/movies/lib/dirPagination.js',
-      'apps/movies/static/movies/lib/ui-bootstrap-tpls-2.0.0.js',
-      'apps/movies/static/movies/js/app.js',
-      'apps/movies/static/movies/js/services.js',
-      'apps/movies/static/movies/js/directives.js',
-      'apps/movies/static/movies/js/controllers.js',
+//      'apps/movies/static/movies/lib/angular-ui-router.min.js',
+//      'apps/movies/static/movies/lib/angular-resource.min.js',
+//      'apps/movies/static/movies/lib/angular-animate.js',
+//      'apps/movies/static/movies/lib/dirPagination.js',
+//      'apps/movies/static/movies/lib/ui-bootstrap-tpls-2.0.0.js',
+      'apps/movies/static/movies/js/index.js',
+//      'apps/movies/static/movies/js/app.js',
+//      'apps/movies/static/movies/js/services.js',
+//      'apps/movies/static/movies/js/directives.js',
+//      'apps/movies/static/movies/js/controllers.js',
       'apps/movies/static/movies/test/spec/*Spec.js'
     ],
 
@@ -38,7 +43,12 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-        'apps/movies/static/movies/js/*.js': ['coverage']
+        'apps/movies/static/movies/js/*.js': ['coverage', 'webpack']
+    },
+
+    webpack: webpackConfig,
+    webpackMiddleware: {
+      noInfo: true
     },
 
     // list of karma plugins
@@ -47,7 +57,8 @@ module.exports = function(config) {
         'karma-chrome-launcher',
         'karma-firefox-launcher',
         'karma-jasmine',
-        'karma-phantomjs-launcher'
+        'karma-phantomjs-launcher',
+        'karma-webpack'
     ],
 
     // test results reporter to use

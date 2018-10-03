@@ -1,1 +1,1 @@
-{"status":"done","chunks":{"app":[{"name":"app.bundle.js","path":"/home/davidg/movies-spa-upgrade/apps/movies/static/movies/bundles/app.bundle.js"},{"name":"app.bundle.js.map","path":"/home/davidg/movies-spa-upgrade/apps/movies/static/movies/bundles/app.bundle.js.map"}]}}
+{"status":"done","publicPath":"http://localhost:3000/assets/bundles/","chunks":{"app":[{"name":"app.bundle.js","publicPath":"http://localhost:3000/assets/bundles/app.bundle.js","path":"/home/davidg/movies-spa-upgrade/apps/movies/static/movies/bundles/app.bundle.js"}]}}
