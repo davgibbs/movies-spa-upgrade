@@ -1,6 +1,6 @@
 language: python
 node_js:
-  - "9.11.2"
+  - "9"
 python:
   - "3.6"
 # command to install dependencies
