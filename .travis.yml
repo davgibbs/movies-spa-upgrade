@@ -1,12 +1,12 @@
 language: python
 node_js:
-  - "9"
+  - "9.11.2"
 python:
   - "3.6"
 # command to install dependencies
 install:
   - pip install -r requirements.txt
-  - npm install --only=dev
+  - npm install
 # command to run tests
 script:
   - flake8 apps/
