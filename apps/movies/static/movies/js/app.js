@@ -1,7 +1,7 @@
 'use strict';
 
 require('angular');
-require('angular-ui-router/');
+require('@uirouter/angularjs');
 require('angular-ui-bootstrap');
 require('angular-utils-pagination/dirPagination.js');
 

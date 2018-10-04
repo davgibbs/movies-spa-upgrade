@@ -4,6 +4,7 @@
   "description": "SPA for movies upgrade",
   "main": "gulpfile.js",
   "dependencies": {
+    "@uirouter/angularjs": "^1.0.20",
     "angular": "^1.7.4",
     "angular-animate": "^1.7.4",
     "angular-ui-bootstrap": "^2.5.6",
@@ -40,6 +41,7 @@
     "style-loader": "^0.23.0",
     "url-loader": "^1.1.1",
     "webpack": "^4.20.1",
+    "webpack-bundle-analyzer": "^3.0.2",
     "webpack-bundle-tracker": "^0.3.0",
     "webpack-cli": "^3.1.1",
     "webpack-dev-server": "^3.1.9",
@@ -48,7 +50,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "karmatest": "karma start --single-run",
-    "bundle": "webpack --config webpack.prod.js",
+    "bundle": "webpack --display-modules --config webpack.prod.js",
     "develop": "webpack --watch --config webpack.dev.js"
   },
   "repository": {

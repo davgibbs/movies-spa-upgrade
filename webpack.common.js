@@ -6,10 +6,12 @@ module.exports = {
     entry: {
         app: './js/index.js',
         //vendor: ['bootstrap', 'angular', 'angular-ui-router', 'angular-ui-bootstrap']
+//        jquerybootstrap: ['jquery', 'bootstrap'],
+//        angular: ['angular']
     },
     output: {
         path: __dirname + '/apps/movies/static/movies/bundles',
-        filename: '[name].bundle.js',
+        filename: '[name].[hash].bundle.js',
         //filename: '[name].[chunkhash].bundle.js'
     },
     plugins: [
@@ -19,12 +21,22 @@ module.exports = {
            jQuery: "jquery"
         })
     ],
-    /*optimization: {
+    optimization: {
         splitChunks: {
-        chunks: "all",
-          minSize: 800000
-      }
-    },*/
+            cacheGroups: {
+                commons: {
+                 test: /[\\/]node_modules[\\/]/,
+                 chunks: 'initial',
+                 name: 'vendor',
+                },
+               }
+        }
+    },
+//    optimization: {
+//        splitChunks: {
+//            chunks: "all"
+//      }
+//    },
 //    optimization: {
 //     minimize: false
 //   },
