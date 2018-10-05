@@ -16,6 +16,7 @@
   },
   "devDependencies": {
     "browser-sync": "~2.24.1",
+    "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^1.0.0",
     "csslint": "^1.0.5",
     "file-loader": "^2.0.0",
@@ -37,6 +38,7 @@
     "karma-jasmine": "^1.1.1",
     "karma-phantomjs-launcher": "^1.0.4",
     "karma-webpack": "^3.0.5",
+    "mini-css-extract-plugin": "^0.4.3",
     "phantomjs-prebuilt": "^2.1.16",
     "style-loader": "^0.23.0",
     "url-loader": "^1.1.1",

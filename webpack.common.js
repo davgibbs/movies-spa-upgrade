@@ -1,25 +1,26 @@
 const webpack = require('webpack');
 const BundleTracker = require('webpack-bundle-tracker');
+const CleanWebpackPlugin = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 module.exports = {
     context: __dirname + '/apps/movies/static/movies',
     entry: {
         app: './js/index.js',
-        //vendor: ['bootstrap', 'angular', 'angular-ui-router', 'angular-ui-bootstrap']
-//        jquerybootstrap: ['jquery', 'bootstrap'],
-//        angular: ['angular']
     },
     output: {
         path: __dirname + '/apps/movies/static/movies/bundles',
         filename: '[name].[hash].bundle.js',
-        //filename: '[name].[chunkhash].bundle.js'
+        chunkFilename: '[name].[chunkhash].bundle.js',
     },
     plugins: [
         new BundleTracker({filename: './apps/webpack-stats.json'}),
         new webpack.ProvidePlugin({
            $: "jquery",
            jQuery: "jquery"
-        })
+        }),
+        new CleanWebpackPlugin([__dirname + '/apps/movies/static/movies/bundles']),
+        new MiniCssExtractPlugin({filename: "[name].css"}),
     ],
     optimization: {
         splitChunks: {
@@ -33,18 +34,23 @@ module.exports = {
         }
     },
 //    optimization: {
-//        splitChunks: {
-//            chunks: "all"
-//      }
-//    },
-//    optimization: {
 //     minimize: false
 //   },
     module: {
       rules: [
         {
-          test: /\.css$/,
-          use: ['style-loader', 'css-loader']
+            test: /\.css$/,
+            use: [
+              {
+                loader: MiniCssExtractPlugin.loader,
+                options: {
+                  // you can specify a publicPath here
+                  // by default it use publicPath in webpackOptions.output
+                  publicPath: '/static/bundles/images/'
+                }
+              },
+              "css-loader"
+            ]
         },
         {
           test: /\.html$/,
@@ -53,17 +59,15 @@ module.exports = {
           }]
         },
         {
-          test: /.*\.(gif|png|jpe?g)$/i,
-          use: [
-              {
+          test: /.*\.(gif|ico|png|jpe?g)$/i,
+          use: [{
                 loader: "file-loader",
                 options: {
                   name: '[name].[ext]',
                   outputPath: '/images/',
                   publicPath: '/static/bundles/images/'
                 }
-              }
-          ]
+              }]
         },
         {
           test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
@@ -71,13 +75,13 @@ module.exports = {
             {
                 loader: 'url-loader',
                 options: {
-                    limit: 400000,
+                    limit: 300,
                     name: '[name].[ext]',
-                    outputPath: 'fonts/'
+                    outputPath: '/fonts/',
+                    publicPath: '/static/bundles/fonts/'
                 }
             }
           ]
-
         },
         {
           test: /\.(ttf|eot|svg)(\?[\s\S]+)?$/,
@@ -86,10 +90,10 @@ module.exports = {
                 loader: 'file-loader',
                 options: {
                     name: '[name].[ext]',
-                    outputPath: 'fonts/'
+                    outputPath: '/fonts/',
+                    publicPath: '/static/bundles/fonts/'
                 }
             }
-
           ]
         },
       ]

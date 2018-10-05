@@ -69,4 +69,5 @@ py35/
 py36/
 .idea/
 node_modules/
+bundles/
 webpack-stats.json
