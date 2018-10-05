@@ -14,88 +14,86 @@ module.exports = {
         chunkFilename: '[name].[chunkhash].bundle.js',
     },
     plugins: [
-        new BundleTracker({filename: './apps/webpack-stats.json'}),
+        new BundleTracker({
+            filename: './apps/webpack-stats.json'
+        }),
         new webpack.ProvidePlugin({
-           $: "jquery",
-           jQuery: "jquery"
+            $: "jquery",
+            jQuery: "jquery"
         }),
         new CleanWebpackPlugin([__dirname + '/apps/movies/static/movies/bundles']),
-        new MiniCssExtractPlugin({filename: "[name].css"}),
+        new MiniCssExtractPlugin({
+            filename: "[name].css"
+        }),
     ],
     optimization: {
         splitChunks: {
             cacheGroups: {
                 commons: {
-                 test: /[\\/]node_modules[\\/]/,
-                 chunks: 'initial',
-                 name: 'vendor',
+                    test: /[\\/]node_modules[\\/]/,
+                    chunks: 'initial',
+                    name: 'vendor',
                 },
-               }
+            }
         }
     },
-//    optimization: {
-//     minimize: false
-//   },
+    //    optimization: {
+    //     minimize: false
+    //   },
     module: {
-      rules: [
-        {
-            test: /\.css$/,
-            use: [
-              {
-                loader: MiniCssExtractPlugin.loader,
-                options: {
-                  // you can specify a publicPath here
-                  // by default it use publicPath in webpackOptions.output
-                  publicPath: '/static/bundles/images/'
-                }
-              },
-              "css-loader"
-            ]
-        },
-        {
-          test: /\.html$/,
-          use: [{
-           loader: "html-loader"
-          }]
-        },
-        {
-          test: /.*\.(gif|ico|png|jpe?g)$/i,
-          use: [{
-                loader: "file-loader",
-                options: {
-                  name: '[name].[ext]',
-                  outputPath: '/images/',
-                  publicPath: '/static/bundles/images/'
-                }
-              }]
-        },
-        {
-          test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
-          use: [
+        rules: [{
+                test: /\.css$/,
+                use: [{
+                        loader: MiniCssExtractPlugin.loader,
+                        options: {
+                            // you can specify a publicPath here
+                            // by default it use publicPath in webpackOptions.output
+                            publicPath: '/static/bundles/images/'
+                        }
+                    },
+                    "css-loader"
+                ]
+            },
             {
-                loader: 'url-loader',
-                options: {
-                    limit: 300,
-                    name: '[name].[ext]',
-                    outputPath: '/fonts/',
-                    publicPath: '/static/bundles/fonts/'
-                }
-            }
-          ]
-        },
-        {
-          test: /\.(ttf|eot|svg)(\?[\s\S]+)?$/,
-          use: [
+                test: /\.html$/,
+                use: [{
+                    loader: "html-loader"
+                }]
+            },
             {
-                loader: 'file-loader',
-                options: {
-                    name: '[name].[ext]',
-                    outputPath: '/fonts/',
-                    publicPath: '/static/bundles/fonts/'
-                }
-            }
-          ]
-        },
-      ]
+                test: /.*\.(gif|ico|png|jpe?g)$/i,
+                use: [{
+                    loader: "file-loader",
+                    options: {
+                        name: '[name].[ext]',
+                        outputPath: '/images/',
+                        publicPath: '/static/bundles/images/'
+                    }
+                }]
+            },
+            {
+                test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                use: [{
+                    loader: 'url-loader',
+                    options: {
+                        limit: 300,
+                        name: '[name].[ext]',
+                        outputPath: '/fonts/',
+                        publicPath: '/static/bundles/fonts/'
+                    }
+                }]
+            },
+            {
+                test: /\.(ttf|eot|svg)(\?[\s\S]+)?$/,
+                use: [{
+                    loader: 'file-loader',
+                    options: {
+                        name: '[name].[ext]',
+                        outputPath: '/fonts/',
+                        publicPath: '/static/bundles/fonts/'
+                    }
+                }]
+            },
+        ]
     }
 };

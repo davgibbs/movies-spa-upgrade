@@ -1,5 +1,6 @@
 import os
 from collections import OrderedDict
+from unittest.mock import patch
 
 from django.test import TestCase
 from django.contrib.auth.models import User
@@ -21,10 +22,12 @@ def is_user_authenticated(session_key):
 
 
 class MoveTestTemplate(TestCase):
-    def test_index_ok(self):
+    @patch('webpack_loader.loader.WebpackLoader.get_bundle')
+    def test_index_ok(self, mock_wpl):
         response = self.client.get('')
         self.assertEqual(response.status_code, 200)
         self.assertTrue("Movie Gallery" in response.content.decode())
+        self.assertEqual(mock_wpl.call_count, 2)
 
 
 class MovieTestCase(TestCase):

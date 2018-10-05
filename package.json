@@ -51,7 +51,8 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "karmatest": "karma start --single-run",
+    "karma": "karma start --single-run",
+    "jshint": "jshint apps/movies/static/movies/js/",
     "bundle": "webpack --display-modules --config webpack.prod.js",
     "develop": "webpack --watch --config webpack.dev.js"
   },

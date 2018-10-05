@@ -1,6 +1,6 @@
 'use strict';
 
-var favicon = require('../images/favicon.ico')
+var favicon = require('../images/favicon.ico');
 require('bootstrap/js/dropdown');
 require('bootstrap/dist/css/bootstrap.css');  // import the css. Bootstrap 3
 require('./app.js');
@@ -16,9 +16,9 @@ metaTwo.content = "width=device-width, initial-scale=1";
 document.head.appendChild(metaTwo);
 
 var link = document.createElement('link'); // Add favicon
-link.rel = "icon"
-link.type = "image/x-icon"
-link.href = favicon
+link.rel = "icon";
+link.type = "image/x-icon";
+link.href = favicon;
 document.head.appendChild(link);
 
 var root = document.createElement("div"); // Create the base layout for the app
