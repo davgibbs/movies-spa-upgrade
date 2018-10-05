@@ -19,7 +19,7 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'apps/movies/static/movies/lib/angular.min.js',
+      'apps/movies/static/movies/test/lib/angular.min.js', // This needs to be kept in sync with webpack version somehow
       'apps/movies/static/movies/test/lib/angular-mocks.js',
 //      'apps/movies/static/movies/lib/angular-ui-router.min.js',
 //      'apps/movies/static/movies/lib/angular-resource.min.js',
@@ -48,7 +48,8 @@ module.exports = function(config) {
 
     webpack: webpackConfig,
     webpackMiddleware: {
-      noInfo: true
+      //noInfo: true
+      //stats: 'errors-only'
     },
 
     // list of karma plugins
@@ -89,7 +90,8 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['PhantomJS'],
+    //browsers: ['PhantomJS'],
+    browsers: ['Chrome'],
 
 
     // Continuous Integration mode
