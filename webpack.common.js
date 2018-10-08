@@ -1,3 +1,5 @@
+/* This is the Webpack config common to both production and development */
+
 const webpack = require('webpack');
 const BundleTracker = require('webpack-bundle-tracker');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
@@ -37,9 +39,6 @@ module.exports = {
             }
         }
     },
-    //    optimization: {
-    //     minimize: false
-    //   },
     module: {
         rules: [{
                 test: /\.css$/,

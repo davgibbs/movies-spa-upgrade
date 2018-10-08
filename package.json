@@ -12,11 +12,10 @@
     "angular-utils-pagination": "^0.11.1",
     "bootstrap": "~3.3.7",
     "jquery": "^3.3.1",
-    "popper.js": "^1.14.4"
+    "popper.js": "^1.14.4",
+    "webpack-dev-server": "^3.1.9"
   },
   "devDependencies": {
-    "browser-sync": "^2.26.0",
-    "browser-sync-webpack-plugin": "^2.2.2",
     "clean-webpack-plugin": "^0.1.19",
     "css-loader": "^1.0.0",
     "csslint": "^1.0.5",
@@ -44,16 +43,13 @@
     "webpack-bundle-analyzer": "^3.0.2",
     "webpack-bundle-tracker": "^0.3.0",
     "webpack-cli": "^3.1.1",
-    "webpack-dev-server": "^3.1.9",
     "webpack-merge": "^4.1.4"
   },
   "scripts": {
-    "karma": "karma start --single-run",
-    "jshint": "jshint apps/movies/static/movies/js/",
     "build": "webpack --display-modules --config webpack.prod.js",
-    "watch": "webpack --watch --config webpack.prod.js",
-    "server": "node server.js",
-    "reload": "webpack-dev-server --config webpack.dev.js"
+    "start": "webpack-dev-server --open --config webpack.dev.js",
+    "karma": "karma start --single-run",
+    "jshint": "jshint apps/movies/static/movies/js/"
   },
   "repository": {
     "type": "git",

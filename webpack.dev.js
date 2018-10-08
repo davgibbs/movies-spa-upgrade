@@ -1,44 +1,32 @@
+/* This is the config for development. It use webpack-dev-server with detailed source maps */
+
 const merge = require('webpack-merge');
-var path = require('path');
 const common = require('./webpack.common.js');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const BrowserSyncPlugin = require('browser-sync-webpack-plugin');
 
 module.exports = merge(common, {
     mode: 'development',
     devtool: 'inline-source-map',
+    devServer: {
+        contentBase: __dirname + '/apps/movies/static/movies/bundles',
+        port: 3000
+    },
     output: {
         publicPath: 'http://localhost:3000/static/bundles/'
     },
     plugins: [
       new HtmlWebpackPlugin({
-        title: 'Output Management'
+        title: 'Development Output'
       }),
-      new BrowserSyncPlugin({
-          // browse to http://localhost:3000/ during development,
-          // ./public directory is being served
-          host: 'localhost',
-          port: 4000,
-          proxy: 'http://localhost:3000/',
-          open: false
-          //server: { baseDir: [__dirname + '/apps/movies/static/movies/bundles'] }
-        },
-//        {
-//        // prevent BrowserSync from reloading the page
-//        // and let Webpack Dev Server take care of this
-//        reload: false
-//      }
-      )
-
+      //new BundleAnalyzerPlugin()
+      //new webpack.SourceMapDevToolPlugin({
+      //    filename: '[name].js.map',
+      //    }),
     ],
-    devServer: {
-        host: '127.0.0.1',
-        contentBase: path.join(__dirname, 'static/bundles/'),
-        port: 3000,
-        publicPath: '/static/bundles/',
-        watchContentBase: true
-    },
 
+    optimization: {
+        minimize: false
+    },
     module: {
         rules: [{
                 test: /.*\.(gif|ico|png|jpe?g)$/i,
