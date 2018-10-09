@@ -24,9 +24,9 @@ module.exports = merge(common, {
       //    }),
     ],
 
-    optimization: {
-        minimize: false
-    },
+    //optimization: {
+    //    minimize: false
+    //},
     module: {
         rules: [{
                 test: /.*\.(gif|ico|png|jpe?g)$/i,
@@ -44,10 +44,9 @@ module.exports = merge(common, {
                 use: [{
                     loader: 'url-loader',
                     options: {
-                        limit: 300,
                         name: '[name].[ext]',
                         outputPath: 'fonts/',
-                        publicPath: 'fonts/'
+                        publicPath: 'http://localhost:3000/static/bundles/fonts/'
                     }
                 }]
             },
@@ -58,7 +57,7 @@ module.exports = merge(common, {
                     options: {
                         name: '[name].[ext]',
                         outputPath: 'fonts/',
-                        publicPath: 'fonts/'
+                        publicPath: 'http://localhost:3000/static/bundles/fonts/'
                     }
                 }]
             },

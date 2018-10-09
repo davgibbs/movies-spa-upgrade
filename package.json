@@ -47,7 +47,7 @@
   },
   "scripts": {
     "build": "webpack --display-modules --config webpack.prod.js",
-    "start": "webpack-dev-server --open --config webpack.dev.js",
+    "start": "webpack-dev-server --config webpack.dev.js",
     "karma": "karma start --single-run",
     "jshint": "jshint apps/movies/static/movies/js/"
   },
