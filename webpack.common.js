@@ -47,7 +47,7 @@ module.exports = {
                         options: {
                             // you can specify a publicPath here
                             // by default it use publicPath in webpackOptions.output
-                            publicPath: '/static/bundles/images/'
+                            publicPath: '/static/bundles/css/'
                         }
                     },
                     "css-loader"
@@ -59,6 +59,14 @@ module.exports = {
                     loader: "html-loader"
                 }]
             },
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: "eslint-loader",
+                options: {
+                  // eslint options (if necessary)
+                }
+            }
         ]
     }
 };

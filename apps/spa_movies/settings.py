@@ -25,7 +25,7 @@ SECRET_KEY = 'ss!@cvdm$38bkbuk5hw!_csg(_@kfl3_)3vi$!@_2q(f!l1q!q'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1']
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 # Application definition
 
@@ -138,7 +138,7 @@ REST_FRAMEWORK = {
     )
 }
 
-# Django's collectstatic copies or our bundles to the STATIC_ROOT or syncs them to whatever storage we use.
+# Django's collectstatic copies our bundles to the STATIC_ROOT or syncs them to whatever storage we use.
 STATICFILES_DIRS = (
     os.path.join(BASE_DIR, 'movies/static/movies'),
 )
