@@ -1,6 +1,16 @@
 {
     "extends": "airbnb-base",
     "rules": {
-        "indent": ["error", 4]
+        "indent": ["error", 4],
+        "no-param-reassign": [2, { "props": false }],
+        "no-alert": "off",
+        "prefer-template": "off",
+        "prefer-destructuring": "off"
+    },
+    "globals": {
+        "angular": true,
+        "alert": true,
+        "FormData": true,
+        "document": true
     }
 }
