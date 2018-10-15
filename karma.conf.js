@@ -2,8 +2,8 @@
 // Generated on Wed Aug 10 2016 00:22:16 GMT+0100 (IST)
 
 // remove entry value since karma-webpack will set its value automatically
-var webpackConfig = require("./webpack.prod.js");
-webpackConfig.entry = null;
+//var webpackConfig = require("./webpack.test.js");
+//webpackConfig.entry = null;
 
 module.exports = function(config) {
   config.set({
@@ -19,14 +19,20 @@ module.exports = function(config) {
 
     // list of files / patterns to load in the browser
     files: [
-      'apps/movies/static/movies/test/lib/angular.min.js', // This needs to be kept in sync with webpack version somehow
-      'apps/movies/static/movies/test/lib/angular-mocks.js',
+      //'./node_modules/jasmine-core/lib/jasmine-core/jasmine.js',
+      //'apps/movies/static/movies/test/lib/angular.min.js', // This needs to be kept in sync with webpack version somehow
+        './node_modules/angular/angular.min.js',
+        './node_modules/angular-mocks/angular-mocks.js',
+      //'apps/movies/static/movies/test/lib/angular-mocks.js',
+
 //      'apps/movies/static/movies/lib/angular-ui-router.min.js',
 //      'apps/movies/static/movies/lib/angular-resource.min.js',
 //      'apps/movies/static/movies/lib/angular-animate.js',
 //      'apps/movies/static/movies/lib/dirPagination.js',
 //      'apps/movies/static/movies/lib/ui-bootstrap-tpls-2.0.0.js',
-      'apps/movies/static/movies/js/index.js',
+      //'apps/movies/static/movies/js/index.js',
+        'apps/movies/static/movies/bundle/vendor.js',
+        'apps/movies/static/movies/bundle/app.js',
 //      'apps/movies/static/movies/js/app.js',
 //      'apps/movies/static/movies/js/services.js',
 //      'apps/movies/static/movies/js/directives.js',
@@ -43,14 +49,14 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-        'apps/movies/static/movies/js/*.js': ['coverage', 'webpack']
+        'apps/movies/static/movies/js/*.js': ['coverage']
     },
 
-    webpack: webpackConfig,
-    webpackMiddleware: {
+    //webpack: webpackConfig,
+    //webpackMiddleware: {
       //noInfo: true
       //stats: 'errors-only'
-    },
+    //},
 
     // list of karma plugins
     plugins : [
@@ -58,14 +64,13 @@ module.exports = function(config) {
         'karma-chrome-launcher',
         'karma-firefox-launcher',
         'karma-jasmine',
-        'karma-phantomjs-launcher',
-        'karma-webpack'
+        'karma-phantomjs-launcher'
     ],
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress', 'coverage'],
+    reporters: ['progress'],
 
     coverageReporter: {
         type: 'text'
@@ -81,7 +86,7 @@ module.exports = function(config) {
 
     // level of logging
     // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-    logLevel: config.LOG_INFO,
+    logLevel: config.LOG_DEBUG,
 
 
     // enable / disable watching file and executing tests whenever any file changes
@@ -90,8 +95,8 @@ module.exports = function(config) {
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['PhantomJS'],
-    //browsers: ['Chrome'],
+    //browsers: ['PhantomJS'],
+    browsers: ['Chrome'],
 
 
     // Continuous Integration mode
