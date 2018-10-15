@@ -1,5 +1,5 @@
 const favicon = require('../images/favicon.ico');
-require('bootstrap/js/dropdown');
+require('bootstrap'); // JS for bootstrap
 require('bootstrap/dist/css/bootstrap.css'); // import the css. Bootstrap 3
 require('./app.js');
 

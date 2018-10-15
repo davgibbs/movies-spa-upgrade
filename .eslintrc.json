@@ -1,5 +1,6 @@
 {
-    "extends": "airbnb-base",
+    "plugins": ["jasmine"],
+    "extends": ["airbnb-base", "plugin:jasmine/recommended"],
     "rules": {
         "indent": ["error", 4],
         "no-param-reassign": [2, { "props": false }],
@@ -12,5 +13,8 @@
         "alert": true,
         "FormData": true,
         "document": true
+    },
+    "env": {
+        "jasmine": true
     }
 }
