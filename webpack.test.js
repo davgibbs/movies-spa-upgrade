@@ -1,82 +1,54 @@
-/* This is the Webpack config common to both production and development */
+/* This is the config for test. It does not minimise code for the bundle or add a hash to the bundle */
 
-const webpack = require('webpack');
-const BundleTracker = require('webpack-bundle-tracker');
-//const CleanWebpackPlugin = require('clean-webpack-plugin');
-const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const merge = require('webpack-merge');
+const common = require('./webpack.common.js');
 
-module.exports = {
-    context: __dirname + '/apps/movies/static/movies',
-    entry: {
-        app: './js/index.js',
-    },
+module.exports = merge(common, {
+    mode: 'production',
+    devtool: 'nosources-source-map',
     output: {
         path: __dirname + '/apps/movies/static/movies/bundles',
         filename: '[name].bundle.js',
         chunkFilename: '[name].bundle.js',
     },
-    plugins: [
-          new HtmlWebpackPlugin({
-            title: 'Development Output'
-          }),
-        new BundleTracker({
-            filename: './apps/webpack-stats.json'
-        }),
-        new webpack.ProvidePlugin({
-            $: "jquery",
-            jQuery: "jquery"
-        }),
-        //new CleanWebpackPlugin([__dirname + '/apps/movies/static/movies/bundles']),
-        new MiniCssExtractPlugin({
-            filename: "[name].css"
-        }),
-    ],
     optimization: {
-        minimize: false,
-        splitChunks: {
-            cacheGroups: {
-                commons: {
-                    test: /[\\/]node_modules[\\/]/,
-                    chunks: 'initial',
-                    name: 'vendor',
-                },
-            }
-        }
+        minimize: false
     },
     module: {
         rules: [{
-                test: /\.css$/,
-                use: [{
-                        loader: MiniCssExtractPlugin.loader,
+                    test: /.*\.(gif|ico|png|jpe?g)$/i,
+                    use: [{
+                        loader: "file-loader",
                         options: {
-                            // you can specify a publicPath here
-                            // by default it use publicPath in webpackOptions.output
-                            publicPath: '/static/bundles/css/'
+                            name: '[name].[ext]',
+                            outputPath: '/images/',
+                            publicPath: '/static/bundles/images/'
                         }
-                    },
-                    "css-loader"
-                ]
-            },
-            {
-                test: /\.html$/,
-                use: [{
-                    loader: "html-loader"
-                }]
-            },
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                loader: "babel-loader",
-                query: {
-                    presets: ["@babel/preset-env"]
-                }
-            },
-            {
-                test: /\.js$/,
-                exclude: /node_modules/,
-                loader: "eslint-loader"
-            }
+                    }]
+                },
+                {
+                    test: /\.woff2?(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                    use: [{
+                        loader: 'url-loader',
+                        options: {
+                            limit: 300,
+                            name: '[name].[ext]',
+                            outputPath: '/fonts/',
+                            publicPath: '/static/bundles/fonts/'
+                        }
+                    }]
+                },
+                {
+                    test: /\.(ttf|eot|svg)(\?[\s\S]+)?$/,
+                    use: [{
+                        loader: 'file-loader',
+                        options: {
+                            name: '[name].[ext]',
+                            outputPath: '/fonts/',
+                            publicPath: '/static/bundles/fonts/'
+                        }
+                    }]
+                },
         ]
     }
-};
+});

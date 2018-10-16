@@ -1,3 +1,5 @@
+'use strict';
+
 describe('Hello world', function() {
     it('says hello', function() {
         expect('Hello world!').toEqual('Hello world!');
@@ -232,7 +234,7 @@ describe('NavigationController Tests', function() {
     }));
 
     it('Nav is correct', function() {
-        var AuthService = {'isAuthenticated' : function (){ return true; }}
+        var AuthService = {'isAuthenticated' : function (){ return true; }};
         var AUTH_EVENTS = { loginSuccess: 'login', logoutSuccess: 'logout' };
         var $location = {
             path: function() {return '/movies/1';}

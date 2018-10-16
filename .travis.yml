@@ -15,7 +15,6 @@ script:
   - coverage3 report -m
   - node -v
   - npm -v
-  - node_modules/.bin/jshint apps/movies/static/movies/js/
   - node_modules/.bin/jshint apps/movies/static/movies/test/spec
   - node_modules/.bin/csslint apps/movies/static/movies/css/app.css
   - node_modules/.bin/htmlhint --config htmlhint.conf apps/movies/templates/movies/index.html

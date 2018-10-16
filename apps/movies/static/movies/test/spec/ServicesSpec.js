@@ -1,3 +1,5 @@
+'use strict';
+
 describe('PopupService Tests', function() {
     beforeEach(angular.mock.module('movieApp.services',
         // mock the window dependency

@@ -3,7 +3,7 @@
 
 // remove entry value since karma-webpack will set its value automatically
 var webpackConfig = require("./webpack.test.js");
-//webpackConfig.entry = null;
+webpackConfig.entry = null;
 
 module.exports = function(config) {
   config.set({
@@ -20,8 +20,9 @@ module.exports = function(config) {
     files: [
         './node_modules/angular/angular.min.js',
         './node_modules/angular-mocks/angular-mocks.js',
-        'apps/movies/static/movies/bundles/vendor.39029b1fa197bf58d3fc.bundle.js',
-        'apps/movies/static/movies/bundles/app.04dfbdbfe931314eeaa6.bundle.js',
+        //'apps/movies/static/movies/js/index.js',
+        'apps/movies/static/movies/bundles/app.bundle.js',
+        //'apps/movies/static/movies/js/index.js',
         'apps/movies/static/movies/test/spec/*Spec.js'
     ],
 
@@ -31,15 +32,16 @@ module.exports = function(config) {
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-    preprocessors: {
-        'apps/movies/static/movies/js/*.js': ['coverage']
+//    preprocessors: {
+//        //'apps/movies/static/movies/js/*.js': ['coverage', 'webpack']
+//        'apps/movies/static/movies/js/index.js': ['webpack']
+//    },
+
+    webpack: webpackConfig,
+    webpackMiddleware: {
+      noInfo: false
     },
 
-    //webpack: webpackConfig,
-    //webpackMiddleware: {
-      //noInfo: true
-      //stats: 'errors-only'
-    //},
 
     // list of karma plugins
     plugins : [
@@ -47,7 +49,8 @@ module.exports = function(config) {
         'karma-chrome-launcher',
         'karma-firefox-launcher',
         'karma-jasmine',
-        'karma-phantomjs-launcher'
+        'karma-phantomjs-launcher',
+        'karma-webpack'
     ],
 
     // test results reporter to use
@@ -75,6 +78,7 @@ module.exports = function(config) {
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
     browsers: ['PhantomJS'],
+    //browsers: ['Chrome'],
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
