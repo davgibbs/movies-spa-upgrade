@@ -24,10 +24,6 @@ module.exports = merge(common, {
       //    filename: '[name].js.map',
       //    }),
     ],
-
-    //optimization: {
-    //    minimize: false
-    //},
     module: {
         rules: [{
                 test: /.*\.(gif|ico|png|jpe?g)$/i,

@@ -60,7 +60,7 @@ describe('MovieListController Tests', function() {
             .respond([{ title: 'superman', director: 'James Cameron' }, { title: 'batman', director: 'Bill Oddy' }]);
 
         $httpBackend
-            .when('DEvarE', '/api/movies/2')
+            .when('DELETE', '/api/movies/2')
             .respond(200, { results: 'success' });
     }));
 

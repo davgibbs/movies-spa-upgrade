@@ -28,17 +28,17 @@ module.exports = {
             filename: "[name].css"
         }),
     ],
-//    optimization: {
-//        splitChunks: {
-//            cacheGroups: {
-//                commons: {
-//                    test: /[\\/]node_modules[\\/]/,
-//                    chunks: 'initial',
-//                    name: 'vendor',
-//                },
-//            }
-//        }
-//    },
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                commons: {
+                    test: /[\\/]node_modules[\\/]/,
+                    chunks: 'initial',
+                    name: 'vendor',
+                },
+            }
+        }
+    },
     module: {
         rules: [{
                 test: /\.css$/,
