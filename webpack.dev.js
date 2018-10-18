@@ -22,7 +22,7 @@ module.exports = merge(common, {
       //new BundleAnalyzerPlugin()
       //new webpack.SourceMapDevToolPlugin({
       //    filename: '[name].js.map',
-      //    }),
+      //}),
     ],
     module: {
         rules: [{

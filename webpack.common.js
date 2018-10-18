@@ -23,7 +23,9 @@ module.exports = {
             $: "jquery",
             jQuery: "jquery"
         }),
-        new CleanWebpackPlugin([__dirname + '/apps/movies/static/movies/bundles']),
+        new CleanWebpackPlugin([
+            __dirname + '/apps/movies/static/movies/bundles'
+        ]),
         new MiniCssExtractPlugin({
             filename: "[name].css"
         }),
@@ -71,7 +73,7 @@ module.exports = {
                 test: /\.js$/,
                 exclude: /node_modules/,
                 loader: "eslint-loader"
-            }
+            },
         ]
     }
 };

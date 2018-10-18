@@ -23,7 +23,6 @@ module.exports = merge(common, {
                     use: [{
                         loader: 'url-loader',
                         options: {
-                            limit: 300,
                             name: '[name].[ext]',
                             outputPath: '/fonts/',
                             publicPath: '/static/bundles/fonts/'
