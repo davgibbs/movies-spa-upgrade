@@ -27,7 +27,7 @@ class MoveTestTemplate(TestCase):
         response = self.client.get('')
         self.assertEqual(response.status_code, 200)
         self.assertTrue("Movie Gallery" in response.content.decode())
-        self.assertEqual(mock_wpl.call_count, 2)
+        self.assertEqual(mock_wpl.call_count, 4)
 
 
 class MovieTestCase(TestCase):
