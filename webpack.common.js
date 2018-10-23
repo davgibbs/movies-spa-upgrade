@@ -27,7 +27,7 @@ module.exports = {
             __dirname + '/apps/movies/static/movies/bundles'
         ]),
         new MiniCssExtractPlugin({
-            filename: "[name].css"
+            filename: "[name].[hash].css"
         }),
     ],
     optimization: {

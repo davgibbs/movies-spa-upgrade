@@ -4,9 +4,11 @@
     <head>
         <meta charset="utf-8">
         <title>The Movie Gallery</title>
+        {% render_bundle 'vendor' 'css' %}
+        {% render_bundle 'app' 'css' %}
     </head>
     <body>
-        {% render_bundle 'vendor' %}
-        {% render_bundle 'app' %}
+        {% render_bundle 'vendor' 'js' %}
+        {% render_bundle 'app' 'js' %}
     </body>
 </html>
