@@ -49,10 +49,11 @@ class MovieTestCase(TestCase):
         client = APIClient()
         response = client.get('/api/movies', {})
         self.assertEqual(response.status_code, 200)
+
         self.assertEqual(response.data, [OrderedDict([('id', 1),
                                                       ('title', 'Movie 1'),
                                                       ('summary', ''),
-                                                      ('release_year', 2016),
+                                                      ('release_year', 2018),
                                                       ('director', ''),
                                                       ('genre', 1),
                                                       ('genre_obj', OrderedDict([('id', 1),
@@ -61,7 +62,9 @@ class MovieTestCase(TestCase):
                                                       ('rating', 3),
                                                       ('user', 1),
                                                       ('user_obj', OrderedDict([('id', 1),
-                                                                                ('username', 'admin')]))])])
+                                                                                ('username', 'admin')])),
+                                                      ('small_image', 'http://testserver/media/movies/small/Movie.jpg'),
+                                                      ])])
 
     def test_add_movie(self):
         User.objects.create_user('admin', 'myemail@test.com', 'password123')
@@ -82,7 +85,8 @@ class MovieTestCase(TestCase):
                                          'title': 'Lion King',
                                          'user_obj': OrderedDict([('id', 1), ('username', 'admin')]),
                                          'summary': 'Lion Movie',
-                                         'director': 'Roger Allers'})
+                                         'director': 'Roger Allers',
+                                         'small_image': 'http://testserver/media/movies/small/Movie.jpg'})
 
     def test_add_movie_with_image(self):
         User.objects.create_user('admin', 'myemail@test.com', 'password123')
@@ -93,6 +97,7 @@ class MovieTestCase(TestCase):
         # Make sure the media folder does not have an image of the same name - for checking response as string added
         try:
             os.remove(settings.BASE_DIR + '/media/movies/test-image.jpg')
+            os.remove(settings.BASE_DIR + '/media/movies/small/test-image.jpg')
         except FileNotFoundError:
             pass
 
@@ -107,12 +112,14 @@ class MovieTestCase(TestCase):
 
         self.assertEqual(response.status_code, 201)
         self.assertEqual(len(Movie.objects.all()), 1)
+
         self.assertEqual(response.data, {'user': 1, 'rating': 2, 'genre_obj': None, 'id': 1, 'release_year': 1994,
                                          'image': 'http://testserver/media/movies/test-image.jpg', 'genre': 1,
                                          'title': 'Lion King',
                                          'user_obj': OrderedDict([('id', 1), ('username', 'admin')]),
                                          'summary': 'Lion Movie',
-                                         'director': 'Roger Allers'})
+                                         'director': 'Roger Allers',
+                                         'small_image': 'http://testserver/media/movies/small/test-image.jpg'})
 
     def test_add_movie_same_title(self):
         User.objects.create_user('admin', 'myemail@test.com', 'password123')
